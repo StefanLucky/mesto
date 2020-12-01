@@ -1,23 +1,23 @@
 .elements__item-like-button {
 border: 2px solid red;
-    width: 21px;
-    height: 19px;
-    flex-shrink: 0;
-    padding: 0;
-    border: 0;
-    background-image: url('../../../images/like-button-disabled.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
-    cursor: pointer;
-    outline-width: 0;
+  width: 21px;
+  height: 19px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  background-image: url('../../../images/like-button-disabled.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  cursor: pointer;
+  outline-width: 0;
 }
 
 .elements__item-like-button:hover {
-    background-image: url('../../../images/like-button-hover.svg');
+  background-image: url('../../../images/like-button-hover.svg');
 }
 
 .elements__item-like-button:active {
-    background-image: url('../../../images/like-button-active.svg');
+  background-image: url('../../../images/like-button-active.svg');
 }
