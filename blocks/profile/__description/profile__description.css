@@ -1,4 +1,4 @@
-.profile__about {
+.profile__description {
     margin: 7px 0 33px;
     max-width: 240px;
     white-space: nowrap;
@@ -11,14 +11,14 @@
 }
 
 @media screen and (min-width: 768px) {
-    .profile__about {
+    .profile__description {
         align-self: start;
         max-width: 260px;
     }
 }
 
 @media screen and (min-width: 1024px) {
-    .profile__about {
+    .profile__description {
         max-width: 550px;
         margin-bottom: 0;
         font-size: 18px;

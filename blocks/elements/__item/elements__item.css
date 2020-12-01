@@ -1,0 +1,17 @@
+.elements__item {
+    display: flex;
+    flex-wrap: wrap;
+    width: 282px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+}
+
+.elements__item:last-of-type {
+    padding-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .elements__item {
+        margin: 0;
+    }
+}
