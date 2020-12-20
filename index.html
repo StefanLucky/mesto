@@ -10,13 +10,13 @@
 
   <body class="page">
     <header class="header">
-      <img class="header__logo-image" src="./images/mesto-logo.svg" alt="Mesto-Project-logo">
+      <img class="header__logo-image" src="./images/mesto-logo.svg" alt="Лого_Место_Проджект">
     </header>
 
     <main class="content">
 
       <section class="profile">
-        <img  class="profile__avatar" src="./images/kusto-foto.png" alt="user_avatar">
+        <img  class="profile__avatar" src="./images/kusto-foto.png" alt="Аавтар_пользователя">
         <div class="profile__container"> 
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -111,11 +111,11 @@
     </footer>
 
     <div class="popup">
-      <form class="popup__container">
+      <form class="popup__container" name="popup-container">
           <button class="button popup__close-button" type="button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__field" type="text" placeholder="">
-          <input class="popup__field" type="text" placeholder="">
+          <input class="popup__field popup__field_name" name="input-name" type="text" placeholder="">
+          <input class="popup__field popup__field_description" name="input-description" type="text" placeholder="">
           <button class="button popup__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
