@@ -132,10 +132,10 @@ function addElement(location, newElement) {
 
 // Открываем попап/режим просмотра фото
 function openImagePopup(item) {
-  const popupImg = document.querySelector('.popup__image');
-  const popupImgCaption = document.querySelector('.popup__image-caption');
-  popupImg.src = item.link;
-  popupImgCaption.textContent = item.name;
+  const popupImage = document.querySelector('.popup__image');
+  const popupImageCaption = document.querySelector('.popup__image-caption');
+  popupImage.src = item.link;
+  popupImageCaption.textContent = item.name;
   openPopup(popupImg);
 };
 
@@ -166,14 +166,14 @@ editBtn.addEventListener('click', function (e) {
   openPopup(popupEdit);
 });
 
-// Кнопка добавления карточки
-addBtn.addEventListener('click', function (e) {
-  openPopup(popupAdd);
-});
-
 // Закртыие попапа редактирования профиля
 closeEditBtn.addEventListener('click', function (e) {
   closePopup(popupEdit);
+});
+
+// Кнопка добавления карточки
+addBtn.addEventListener('click', function (e) {
+  openPopup(popupAdd);
 });
 
 // Закрытие попапа на добавление карточки
@@ -181,7 +181,7 @@ closeAddBtn.addEventListener('click', function (e) {
   closePopup(popupAdd);
 });
 
-// Закрытие поапа/просмотра фото
+// Закрытие попапа/просмотра фото
 closeImagePopup.addEventListener('click', function (e) {
   closePopup(popupImg);
 });
@@ -191,8 +191,6 @@ addForm.addEventListener('submit', addImg);
 
 // Подтверждение внесения изменений в профиль
 editForm.addEventListener('submit', formSubmitHandler);
-
-// Функция лайка карточки
 
 //// Вызов отрисовки стартовых карточек
 renderElements();
