@@ -16,109 +16,75 @@
     <main class="content">
 
       <section class="profile">
-        <img  class="profile__avatar" src="./images/kusto-foto.png" alt="Аавтар_пользователя">
+        <img  class="profile__avatar" src="./images/kusto-foto.png" alt="Аватар_пользователя">
         <div class="profile__container"> 
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="button profile__edit-button" type="button">
-
-            </button>
+            <button class="button profile__edit-button" type="button"></button>
           </div>
           <p class="profile__description">Исследователь океана</p>
         </div>
-        <button class="button profile__add-button" type="button">
-        
-        </button>
+        <button class="button profile__add-button" type="button"></button>
       </section>
 
       <section class="elements">
-        <ul class="elements__list">
-          <li class="elements__item">
-            <a class="elements__item-photo-link" href="#" target="_blank" rel="noopener noreferrer">
-              <img class="elements__item-photo" src="./images/kirill-pershin-1088404-unsplash.png" alt="Фото Карачаевск">
-            </a>
-            <div class="elements__item-container">
-              <h2 class="elements__item-title">Карачаевск</h2>
-              <button class="button elements__item-like-button" type="button">
-                
-              </button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <a class="elements__item-photo-link" href="#" target="_blank" rel="noopener noreferrer">
-              <img class="elements__item-photo" src="./images/kirill-pershin-1404681-unsplash.png" alt="Фото Эльбрус">
-            </a>
-            <div class="elements__item-container">
-              <h2 class="elements__item-title">Гора Эльбрус</h2>
-              <button class="button elements__item-like-button" type="button">
-                
-              </button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <a class="elements__item-photo-link" href="#" target="_blank" rel="noopener noreferrer">
-              <img class="elements__item-photo" src="./images/kirill-pershin-1556355-unsplash.png" alt="Фото Домбай">
-            </a>
-            <div class="elements__item-container">
-              <h2 class="elements__item-title">Домбай</h2>
-              <button class="button elements__item-like-button" type="button">
-                
-              </button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <a class="elements__item-photo-link" href="#" target="_blank" rel="noopener noreferrer">
-              <img class="elements__item-photo" src="./images/kirill-pershin-1404681-unsplash.png" alt="Фото Эльбрус">
-            </a>
-            <div class="elements__item-container">
-              <h2 class="elements__item-title">Гора Эльбрус</h2>
-              <button class="button elements__item-like-button" type="button">
-                
-              </button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <a class="elements__item-photo-link" href="#" target="_blank" rel="noopener noreferrer">
-              <img class="elements__item-photo" src="./images/kirill-pershin-1556355-unsplash.png" alt="Фото Домбай">
-            </a>
-            <div class="elements__item-container">
-              <h2 class="elements__item-title">Домбай</h2>
-              <button class="button elements__item-like-button" type="button">
-                
-              </button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <a class="elements__item-photo-link" href="#" target="_blank" rel="noopener noreferrer">
-              <img class="elements__item-photo" src="./images/kirill-pershin-1088404-unsplash.png" alt="Фото Карачаево-Черкесия">
-            </a>
-            <div class="elements__item-container">
-              <h2 class="elements__item-title">Карачаево-Черкесия</h2>
-              <button class="button elements__item-like-button" type="button">
-                
-              </button>
-            </div>
-          </li>
-        </ul>
+        <ul class="elements__list"></ul>
       </section>
 
     </main>
 
-    <footer class="footer section page__footer">
+    <footer class="footer">
       <p class="footer__copyright">
         &copy; Stefan Rogovskiy 2020
       </p>
     </footer>
 
-    <div class="popup">
-      <form class="popup__container" name="popup-container">
-          <button class="button popup__close-button" type="button"></button>
+    <!-- Попап редактирования профиля-->
+    <section class="popup popup-edit">
+      <form class="popup__container" name="editForm">
+          <button class="button popup__close-button popup__close-button_edit" type="button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__field popup__field_name" name="input-name" type="text" placeholder="">
-          <input class="popup__field popup__field_description" name="input-description" type="text" placeholder="">
+          <input class="popup__field popup__field_name" 
+          name="input-name" type="text" value="" placeholder="">
+          <input class="popup__field popup__field_description"
+           name="input-description" type="text" value="" placeholder="">
           <button class="button popup__submit-button" type="submit">Сохранить</button>
       </form>
-    </div>
+    </section>
+    
+    <!-- Попап добавления карточки-->
+    <section class="popup popup-add">
+      <form class="popup__container" name="addForm">
+        <button class="button popup__close-button popup__close-button_add" type="button"></button>
+        <h2 class="popup__title popup__title_add">Новое место</h2>
+        <input class="popup__field popup__field_add popup__image-name" 
+        type="text" name="imagename" value="" placeholder="Название">
+        <input class="popup__field popup__field_add popup__image-link" 
+        type="url" name="imagelink" value="" placeholder="Ссылка на картинку">
+        <button class="button popup__submit-button" type="submit">Создать</button>
+      </form>
+    </section>
+
+     <!--Попап увеличения картинки-->
+    <section class="popup popup-img">
+      <div class="popup__container-image">
+        <img class="popup__image" alt="Фото">
+        <h3 class="popup__image-caption"></h3>
+        <button class="button popup__close-button popup__close-button_img" type="button"></button>
+      </div>
+    </section>
+
+    <template class="element__template">
+      <li class="elements__item">
+        <img class="elements__item-photo" src="" alt="Фото">
+        <button class="button elements__item-delete-button" type="button"></button>
+        <div class="elements__item-container">
+          <h2 class="elements__item-title"></h2>
+          <button class="button elements__button-like" type="button"></button>
+        </div>
+      </li>
+    </template>
+
     <script src="./scripts/script.js"></script>
     
   </body>
