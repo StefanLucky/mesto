@@ -26,6 +26,12 @@ const popupAdd = document.querySelector('.popup-add');
 const popupImg = document.querySelector('.popup-img');
 const popupEdit = document.querySelector('.popup-edit');
 
+const imgName = document.querySelector('.popup__image-name');
+const imgLink = document.querySelector('.popup__image-link');
+
+const popupImage = document.querySelector('.popup__image');
+const popupImageCaption = document.querySelector('.popup__image-caption');
+
 // Начальный массив с карточками
 const initialElements = [
   {
@@ -98,6 +104,7 @@ function createElement(item) {
 
   elementTitle.textContent = item.name;
   elementImage.src = item.link;
+  elementImage.alt = item.name;
 
   removeElementButton.addEventListener('click', removeElement);
   elementImage.addEventListener('click', () => openImagePopup(item));
@@ -111,9 +118,6 @@ function createElement(item) {
 // Добавляем информацию новой карточки через форму
 function addImg(evt) {
   evt.preventDefault();
-
-  const imgName = document.querySelector('.popup__image-name');
-  const imgLink = document.querySelector('.popup__image-link');
 
   const item = {
       name: imgName.value,
@@ -132,8 +136,7 @@ function addElement(location, newElement) {
 
 // Открываем попап/режим просмотра фото
 function openImagePopup(item) {
-  const popupImage = document.querySelector('.popup__image');
-  const popupImageCaption = document.querySelector('.popup__image-caption');
+
   popupImage.src = item.link;
   popupImageCaption.textContent = item.name;
   openPopup(popupImg);
