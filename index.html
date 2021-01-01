@@ -41,34 +41,50 @@
 
     <!-- Попап редактирования профиля-->
     <section class="popup popup-edit">
-      <form class="popup__container" name="editForm">
+      <form class="popup__container popup__form" name="editForm" novalidate>
           <button class="button popup__close-button popup__close-button_edit" type="button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__field popup__field_name" 
-          name="input-name" type="text" value="" placeholder="">
-          <input class="popup__field popup__field_description"
-           name="input-description" type="text" value="" placeholder="">
-          <button class="button popup__submit-button" type="submit">Сохранить</button>
+          <label class="popup__label">
+            <input id="profileName__input" name="input-name" type="text" value="" placeholder="" 
+            class="popup__input popup__field popup__field_name" 
+            minlength="2" maxlength="40" required >
+            <span id="profileName__input-error"></span>
+          </label>
+          <label class="popup__label">
+            <input id="description__input" name="input-description" type="text" value="" placeholder=""
+            class=" popup__input popup__field popup__field_description"
+            minlength="2" maxlength="200" required >
+            <span id="description__input-error"></span>
+          </label>
+          <button class="button popup__submit-button popup__button" type="submit">Сохранить</button>
       </form>
     </section>
     
     <!-- Попап добавления карточки-->
     <section class="popup popup-add">
-      <form class="popup__container" name="addForm">
-        <button class="button popup__close-button popup__close-button_add" type="button"></button>
+      <form class="popup__container popup__form" name="addForm" novalidate>
+        <button class="button popup__close-button popup__close-button_add"type="button"></button>
         <h2 class="popup__title popup__title_add">Новое место</h2>
-        <input class="popup__field popup__field_add popup__image-name" 
-        type="text" name="imagename" value="" placeholder="Название">
-        <input class="popup__field popup__field_add popup__image-link" 
-        type="url" name="imagelink" value="" placeholder="Ссылка на картинку">
-        <button class="button popup__submit-button" type="submit">Создать</button>
+        <label class="popup__label">
+          <input id="placeName__input" class="popup__input popup__field popup__field_add popup__image-name" 
+          type="text" name="imagename" value="" placeholder="Название"
+          minlength="2" maxlength="30" required>
+          <span id="placeName__input-error"></span>
+        </label>
+        <label class="popup__label">
+          <input id="imgUrl__input" type="url" name="imagelink" value="" 
+          class="popup__input popup__field popup__field_add popup__image-link" 
+          placeholder="Ссылка на картинку" required>
+          <span id="imgUrl__input-error"></span>
+        </label>
+        <button class="button popup__submit-button popup__button" type="submit" popup__button>Создать</button>
       </form>
     </section>
 
      <!--Попап увеличения картинки-->
     <section class="popup popup-img">
       <div class="popup__container-image">
-        <img class="popup__image" src="./images/src.jpg" alt="Фото">
+        <img class="popup__image" src="./images/src.jpg" alt="Ошибка">
         <h3 class="popup__image-caption"></h3>
         <button class="button popup__close-button popup__close-button_img" type="button"></button>
       </div>
@@ -86,6 +102,6 @@
     </template>
 
     <script src="./scripts/script.js"></script>
-    
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

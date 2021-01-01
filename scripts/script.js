@@ -77,12 +77,34 @@ const initialElements = [
 // Открываем попап
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+  closePopupOverlay();
 };
 
 // Закрываем попап
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
 };
+
+// Закрываем попап клавишей "Escape"
+function closePopupEsc(e) {
+  const activePopup = document.querySelector('.popup_opened');
+  if (e.key === 'Escape' && activePopup) {
+      closePopup(activePopup);
+  }
+}
+
+// Закрываем попап при overlay
+function closePopupOverlay() {
+  const activePopup = document.querySelector('.popup_opened');
+  if (activePopup) {
+      activePopup.addEventListener('click', function (e) {
+          if (e.target === activePopup) {
+              closePopup(e.currentTarget);
+          }
+      });
+  }
+}
 
 // Заносим информацию в профиль
 function formSubmitHandler(evt) {
@@ -159,6 +181,27 @@ function renderElements() {
   elementsList.append(...elements);
 };
 
+// Убираем красное поддчеркивание
+function clearTypeError() {
+  const errorType = document.querySelectorAll('.popup__input_type_error');
+  errorType.forEach(type => {
+      if (type) {
+          type.classList.remove('popup__input_type_error');
+      }
+  });
+}
+
+// Скрываем ошибку в span
+function clearSpanError() {
+  const errorSpan = document.querySelectorAll('.popup__error_visible');
+  errorSpan.forEach(span => {
+      if (span) {
+          span.textContent = '';
+          const submitButton = editForm.querySelector('.popup__button');
+          setButtonState(submitButton, true, validationConfig);
+      }
+  });
+}
 
 //////////////// Слушатели//////////////// 
 
