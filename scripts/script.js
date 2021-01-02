@@ -205,6 +205,14 @@ function clearSpanError() {
 
 //////////////// Слушатели//////////////// 
 
+
+addBtn.addEventListener('click', function (e) {
+  openPopup(popupAdd);
+  const submitButton = popupAdd.querySelector(validationConfig.submitButtonSelector);
+  setButtonState(submitButton, false, validationConfig);
+  addForm.reset();
+})
+
 // Кнопка редактирования профиля
 editBtn.addEventListener('click', function (e) {
   inputName.value = profileName.textContent;
@@ -217,10 +225,10 @@ closeEditBtn.addEventListener('click', function (e) {
   closePopup(popupEdit);
 });
 
-// Кнопка добавления карточки
+/*/ Кнопка добавления карточки
 addBtn.addEventListener('click', function (e) {
   openPopup(popupAdd);
-});
+});*/
 
 // Закрытие попапа на добавление карточки
 closeAddBtn.addEventListener('click', function (e) {

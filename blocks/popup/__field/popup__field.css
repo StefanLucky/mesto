@@ -1,6 +1,5 @@
 .popup__field {
   width: 100%;
-  margin-bottom: 30px;
   padding-bottom: 13px;
   border-top: none;
   border-left: none;
@@ -11,14 +10,4 @@
   line-height: 17px;
   color: #000000;
   outline: none;
-}
-
-.popup__field:last-of-type {
-  margin-bottom: 45px;
-}
-
-@media screen and (min-width: 768px) {
-  .popup__field:last-of-type {
-    margin-bottom: 48px;
-  }
 }

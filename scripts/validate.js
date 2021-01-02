@@ -1,12 +1,3 @@
-const validationConfig = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitBtnSelector: '.popup__button',
-    inactiveBtnClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-}
-
 //////////////// Функции //////////////// 
 
 // Показываем ошибки
@@ -35,12 +26,12 @@ function checkInputValidity(form, input, config) {
 }
 
 // Блокируем кнопки
-function setBtnState(button, isActive, config) {
+function setButtonState(button, isActive, config) {
     if (isActive) {
-        button.classList.remove(config.inactiveBtnClass);
+        button.classList.remove(config.inactiveButtonClass);
         button.disabled = false;
     } else {
-        button.classList.add(config.inactiveBtnClass);
+        button.classList.add(config.inactiveButtonClass);
         button.classList.remove('button');
         button.disabled = true;
     }
@@ -49,12 +40,12 @@ function setBtnState(button, isActive, config) {
 // Добавляем слушателей/проверяем валидность
 function setEventListener(form, config) {
     const inputList = form.querySelectorAll(config.inputSelector);
-    const submitButton = form.querySelector(config.submitBtnSelector);
+    const submitButton = form.querySelector(config.submitButtonSelector);
 
     inputList.forEach(input => {
         input.addEventListener('input', (evt) => {
             checkInputValidity(form, input, config);
-            setBtnState(submitButton, form.checkValidity(), config);
+            setButtonState(submitButton, form.checkValidity(), config);
         });
     });
 }
@@ -71,6 +62,14 @@ function enableValidation(config) {
     });
 }
 
+const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+}
 
 enableValidation(validationConfig)
 

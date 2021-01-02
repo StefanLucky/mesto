@@ -17,11 +17,6 @@
   position: absolute;
 }
 
-.popup__close-button:hover {
-  transition: opacity .1s linear;
-  opacity: .6;
-}
-
 @media screen and (min-width: 768px) {
   .popup__close-button {
     width: 40px;
