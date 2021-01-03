@@ -78,12 +78,15 @@ const initialElements = [
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
-  closePopupOverlay();
+  document.addEventListener('click', closePopupOverlay);
+  /*closePopupOverlay(); */
 };
 
 // Закрываем попап
 function closePopup(popup) {
-    popup.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
+  document.removeEventListener('click', closePopupOverlay);
 };
 
 // Закрываем попап клавишей "Escape"
@@ -162,6 +165,11 @@ function openImagePopup(item) {
   popupImage.src = item.link;
   popupImageCaption.textContent = item.name;
   openPopup(popupImg);
+  popupImage.addEventListener('click', function(e) {
+    if (e.target === e.currentTarget) {
+         closePopup(e.currentTarget);
+    }
+  });
 };
 
 // Ставим лайк
@@ -181,30 +189,7 @@ function renderElements() {
   elementsList.append(...elements);
 };
 
-// Убираем красное поддчеркивание
-function clearTypeError() {
-  const errorType = document.querySelectorAll('.popup__input_type_error');
-  errorType.forEach(type => {
-      if (type) {
-          type.classList.remove('popup__input_type_error');
-      }
-  });
-}
-
-// Скрываем ошибку в span
-function clearSpanError() {
-  const errorSpan = document.querySelectorAll('.popup__error_visible');
-  errorSpan.forEach(span => {
-      if (span) {
-          span.textContent = '';
-          const submitButton = editForm.querySelector('.popup__button');
-          setButtonState(submitButton, true, validationConfig);
-      }
-  });
-}
-
 //////////////// Слушатели//////////////// 
-
 
 addBtn.addEventListener('click', function (e) {
   openPopup(popupAdd);
