@@ -79,7 +79,6 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
   document.addEventListener('click', closePopupOverlay);
-  /*closePopupOverlay(); */
 };
 
 // Закрываем попап
@@ -95,17 +94,12 @@ function closePopupEsc(e) {
   if (e.key === 'Escape' && activePopup) {
       closePopup(activePopup);
   }
-}
+};
 
 // Закрываем попап при overlay
-function closePopupOverlay() {
-  const activePopup = document.querySelector('.popup_opened');
-  if (activePopup) {
-      activePopup.addEventListener('click', function (e) {
-          if (e.target === activePopup) {
-              closePopup(e.currentTarget);
-          }
-      });
+function closePopupOverlay(evt){
+  if(evt.target.classList.contains('popup_opened')){
+    closePopup(evt.target);
   }
 }
 
@@ -165,11 +159,6 @@ function openImagePopup(item) {
   popupImage.src = item.link;
   popupImageCaption.textContent = item.name;
   openPopup(popupImg);
-  popupImage.addEventListener('click', function(e) {
-    if (e.target === e.currentTarget) {
-         closePopup(e.currentTarget);
-    }
-  });
 };
 
 // Ставим лайк
