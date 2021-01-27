@@ -79,17 +79,21 @@ function formSubmitHandler(evt) {
   closePopup(popupEdit);
 };
 
-// Добавляем информацию новой карточки через форму
+// Функция создания карточки
+function createCard(item) {
+ const newCard = new Card(item, '#blank', openImagePopup);
+  const card = newCard.generateCard();
+  return card;
+}
 
+// Добавляем информацию новой карточки через форму
 function addNewElement(evt) {
   const item = {
       name: imgName.value,
       link: imgLink.value
   };
 
-  /*addElement(elementsList, createElement(item))*/
-  const newCard = new Card(item, '#blank', openImagePopup);
-    addElement(elementsList, newCard.generateCard());
+  addElement(elementsList, createCard(item));
   closePopup(popupAdd);
   addForm.reset();
 };
@@ -109,12 +113,8 @@ function openImagePopup(item) {
 
 // Отрисовываем стартовые 6 карточек
 function renderElements() {
-  /*const elements = initialCards.map(createElement);
-  elementsList.append(...elements);*/
   initialCards.map((item) => {
-    const card = new Card(item, '#blank', openImagePopup);
-    const cardElement = card.generateCard();
-    elementsList.append(cardElement);
+    elementsList.append(createCard(item));
 })
 }
 
@@ -122,16 +122,16 @@ function renderElements() {
 
 // Кнопка добавления карточки
 addBtn.addEventListener('click', function (e) {
-  openPopup(popupAdd);
-  const submitButton = addForm.querySelector('.popup__button');
-  addFormValidator.setButtonState(submitButton, false);
   addForm.reset();
+  addFormValidator.resetValidation();
+  openPopup(popupAdd);
 })
 
 // Кнопка редактирования профиля
 editBtn.addEventListener('click', function (e) {
   inputName.value = profileName.textContent;
   inputDesc.value = profileDesc.textContent;
+  editFormValidator.resetValidation();
   openPopup(popupEdit);
 });
 
