@@ -41,7 +41,7 @@ export class Card {
             this._removeElement()
         });
 
-        this._element.querySelector('.elements__item-photo').addEventListener('click', () => {
+        this._cardImage.addEventListener('click', () => {
             this._openImagePopup({ name: this._name, link: this._link })
         });
     }
