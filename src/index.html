@@ -5,18 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mesto Project</title>
-    <link rel="stylesheet" href="./pages/index.css">
   </head>
 
   <body class="page">
     <header class="header">
-      <img class="header__logo-image" src="./images/mesto-logo.svg" alt="Лого_Место_Проджект">
+      <img class="header__logo-image" src="<%=require('./images/mesto-logo.svg')%>" alt="Лого_Место_Проджект">
     </header>
 
     <main class="content">
 
       <section class="profile">
-        <img  class="profile__avatar" src="./images/kusto-foto.png" alt="Аватар_пользователя">
+        <img  class="profile__avatar" src="<%=require('./images/kusto-foto.png')%>" alt="Аватар_пользователя">
         <div class="profile__container"> 
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -84,7 +83,7 @@
      <!--Попап увеличения картинки-->
     <section class="popup popup-img">
       <div class="popup__container-image">
-        <img class="popup__image" src="./images/src.jpg" alt="Ошибка">
+        <img class="popup__image" src="<%=require('./images/src.jpg')%>" alt="Ошибка">
         <h3 class="popup__image-caption"></h3>
         <button class="button popup__close-button popup__close-button_img" type="button"></button>
       </div>
@@ -92,7 +91,7 @@
 
     <template id="blank" class="element__template">
       <li class="elements__item">
-        <img class="elements__item-photo" src="./images/src.jpg" alt="Фото">
+        <img class="elements__item-photo" src="<%=require('./images/src.jpg')%>" alt="Фото">
         <button class="button elements__item-delete-button" type="button"></button>
         <div class="elements__item-container">
           <h2 class="elements__item-title"></h2>
@@ -101,6 +100,5 @@
       </li>
     </template>
 
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
