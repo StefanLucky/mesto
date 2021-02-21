@@ -22,11 +22,11 @@ module.exports = {
       {
         test: /\.js$/,
         use: 'babel-loader',
-        exclude: /node_modules/
+        exclude: '/node_modules/'
       },
       {
         test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
-        type: 'asset/resource'
+        type: 'asset/resource',
       },
       {
         test: /\.css$/,
@@ -46,6 +46,6 @@ module.exports = {
       template: './src/index.html'
     }),
         new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
   ]
 }; 

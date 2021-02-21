@@ -26,7 +26,7 @@ const userInfo = new UserInfo(profileNameSelector, profileJobSelector);
 const popupImg = new PopupWithImage('.popup-img');
 popupImg.setEventListeners();
 
-const popupEdit = new PopupWithForm('.popup-edit', (UserData) => {
+const popupEdit = new PopupWithForm('.popup-edit', (userData) => {
   userInfo.setUserInfo(UserData);
 });
 popupEdit.setEventListeners();
