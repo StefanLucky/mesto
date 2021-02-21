@@ -27,7 +27,7 @@ const popupImg = new PopupWithImage('.popup-img');
 popupImg.setEventListeners();
 
 const popupEdit = new PopupWithForm('.popup-edit', (userData) => {
-  userInfo.setUserInfo(UserData);
+  userInfo.setUserInfo(userData);
 });
 popupEdit.setEventListeners();
 
@@ -64,7 +64,6 @@ editBtn.addEventListener('click', () => {
 
   addFormValidator.resetValidation();
 });
-
 
 const addFormValidator = new FormValidator(validationConfig, addForm);
 addFormValidator.enableValidation();
