@@ -15,13 +15,15 @@
     <main class="content">
 
       <section class="profile">
-        <img  class="profile__avatar" src="<%=require('./images/kusto-foto.png')%>" alt="Аватар_пользователя">
+        <a class="profile__avatar-icon" href="#" target="_self">
+          <img class="profile__avatar" src="" alt="Аватар">
+      </a>
         <div class="profile__container"> 
           <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button class="button profile__edit-button" type="button"></button>
           </div>
-          <p class="profile__description">Исследователь океана</p>
+          <p class="profile__description"></p>
         </div>
         <button class="button profile__add-button" type="button"></button>
       </section>
@@ -55,10 +57,24 @@
             minlength="2" maxlength="200" required >
             <span id="description__input-error"></span>
           </label>
-          <button class="button popup__submit-button popup__button" type="submit">Сохранить</button>
+          <button class="button popup__button popup__submit-button" type="submit">Сохранить</button>
       </form>
     </section>
-    
+
+    <!-- Попап обновления автарки -->
+    <section class="popup popup-update-avatar">
+      <form class="popup__container popup__form" name="avatar-update" novalidate>
+          <button class="button popup__close-button popup__close-button_update-avatar" type="button"></button>
+          <h2 class="popup__title popup__title_add">Обновить аватар</h2>
+          <label class="popup__label">
+              <input id="imglink__input" type="url" name="avatar" value=""
+                class="popup__field popup__field_add popup__input popup__image-link" required>
+              <span id="imglink__input-error"></span>
+          </label>
+          <button class="button popup__button popup__submit-button" type="submit">Сохранить</button>
+      </form>
+    </section>
+
     <!-- Попап добавления карточки-->
     <section class="popup popup-add">
       <form class="popup__container popup__form" name="addForm" novalidate>
@@ -76,7 +92,16 @@
           placeholder="Ссылка на картинку" required>
           <span id="imgUrl__input-error"></span>
         </label>
-        <button class="popup__submit-button button popup__button" type="submit">Создать</button>
+        <button class="button popup__submit-button popup__button" type="submit">Создать</button>
+      </form>
+    </section>
+
+    <!-- Попап подтверждения удаления карточки-->
+    <section class="popup popup-delete">
+      <form class="popup__container">
+          <button class="popup__close-button button popup__close-button_img" type="button"></button>
+          <h2 class="popup__title">Вы уверены?</h2>
+          <button class="button popup__button popup__submit-button" type="submit">Да</button>
       </form>
     </section>
 
@@ -91,11 +116,14 @@
 
     <template id="blank" class="element__template">
       <li class="elements__item">
-        <img class="elements__item-photo" src="<%=require('./images/src.jpg')%>" alt="Фото">
+        <img class="elements__item-photo" src="<%=require('./images/src.jpg')%>" alt="Ошибка 404">
         <button class="button elements__item-delete-button" type="button"></button>
         <div class="elements__item-container">
           <h2 class="elements__item-title"></h2>
-          <button class="button elements__button-like" type="button"></button>
+          <div class="elements__like-counter">
+            <button class="button elements__button-like" type="button"></button>
+            <p class="elements__likes"></p>
+        </div>
         </div>
       </li>
     </template>
