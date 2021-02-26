@@ -6,12 +6,10 @@ export default class PopupDeleteCard extends Popup {
         this._handleDeleteClick = handleDeleteClick;
     }
 
-
     open(cardData) {
         super.open();
         this._cardData = cardData;
         return this._card;
-
     }
 
     setEventListeners() {
@@ -21,7 +19,5 @@ export default class PopupDeleteCard extends Popup {
             this._handleDeleteClick(this._cardData);
             this.close();
         });
-
     }
-
 }
