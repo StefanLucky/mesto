@@ -3,18 +3,18 @@ export const addBtn = document.querySelector('.profile__add-button');
 export const editForm = document.querySelector('[name="editForm"]');
 export const addForm = document.querySelector('[name="addForm"]');
 
+/* export const inputName = document.querySelector('[name="name"]');
+export const inputDesc = document.querySelector('[name="about"]'); */
 export const inputName = document.querySelector('.popup__field_name');
 export const inputDesc = document.querySelector('.popup__field_description');
-/* export const profileNameSelector = '.profile__name';
-export const profileJobSelector= '.profile__description'; */
 export const name = document.querySelector('.profile__name');
 export const about = document.querySelector('.profile__description');
 export const avatar = document.querySelector('.profile__avatar');
 export const avatarBtn = document.querySelector('.profile__avatar-icon');
 export const avatarForm = document.querySelector('[name="avatar-update"]');
 
-export const popupNameField = document.querySelector('[name="inputname"]');
-export const popupAboutField = document.querySelector('[name="inputdescription"]');
+/* export const popupNameField = document.querySelector('[name="inputname"]');
+export const popupAboutField = document.querySelector('[name="inputdescription"]'); */
 
 export const elementsList = document.querySelector('.elements__list');
 

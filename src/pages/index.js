@@ -1,4 +1,4 @@
-import '../pages/index.css';
+import '../pages/index.css'; 
 import Card from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import UserInfo from '../components/UserInfo.js';
@@ -12,14 +12,9 @@ import {
   addBtn,
   inputName,
   inputDesc,
-/*   profileName,
-  profileJob, */
-/*   profileNameSelector,
-  profileJobSelector, */
   editForm,
   addForm,
   elementsList,
-/*   initialCards, */
   validationConfig,
   name,
   about,
@@ -37,32 +32,30 @@ const api = new Api({
 });
 
 let userId = null;
-/* const userInfo = new UserInfo(profileNameSelector, profileJobSelector); */
-
-/* const popupImg = new PopupWithImage('.popup-img');
-popupImg.setEventListeners(); */
-
-api.getUserInfo()
-    .then(userInfo => {
-        userId = userInfo._id;
-        name.textContent = userInfo.name;
-        about.textContent = userInfo.about;
-        avatar.src = userInfo.avatar;
-    })
-    .catch(err => {
-        console.log(err);
-    })
 
 const userInfo = new UserInfo({
   name: name,
-  about: about
+  about: about,
+  avatar: avatar
 });
+ 
+api.getAllInfo()
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(userData);
+    userInfo.setUserAvatar(userData);
+    userId = userData._id;
+
+    cardsItem.renderElements(cards);
+  })
+  .catch(err => {
+    console.log(err);
+})
 
 const popupEdit = new PopupWithForm('.popup-edit', (userData) => {
   popupEdit.renderLoading(true);
   api.updateUserInfo(userData)
       .then(userData => {
-          return userData;
+        userInfo.setUserInfo(userData);
       })
       .catch(err => {
           console.log(err);
@@ -70,7 +63,6 @@ const popupEdit = new PopupWithForm('.popup-edit', (userData) => {
       .finally(() => {
           popupEdit.renderLoading(false);
       })
-  userInfo.setUserInfo(userData);
 });
 popupEdit.setEventListeners();
 
@@ -95,15 +87,6 @@ avatarBtn.addEventListener('click', () => {
   avatarFormValidator.setButtonState(false);
 })
 
-
-/* const popupAdd = new PopupWithForm('.popup-add', (item) => {
-  const cardSample = new Card(item, '.element__template', (item) => { popupImg.open(item) });
-  const card = cardSample.generateCard();
-  list.addOneElement(card);
-});
-popupAdd.setEventListeners(); */
-
-
 const cardsItem = new Section({
   render: (item) => {
     cardsItem.addElements(createCard(item));
@@ -111,16 +94,6 @@ const cardsItem = new Section({
   },
   elementsList
 );
-
-api.getInitialCards()
-    .then(cards => {
-        cardsItem.renderElements(cards);
-    }
-    )
-    .catch(err => {
-        console.log(err);
-    });
-
 
 const popupAdd = new PopupWithForm('.popup-add', (userData) => {
     popupAdd.renderLoading(true);
@@ -177,11 +150,11 @@ addBtn.addEventListener('click', () => {
 
 editBtn.addEventListener('click', () => {
   const info = userInfo.getUserInfo();
-  popupEdit.open();
   inputName.value = info.name;
   inputDesc.value = info.about;
-
-  addFormValidator.resetValidation();
+  popupEdit.open();
+  editFormValidator.resetValidation();
+  editFormValidator.setButtonState(true);
 });
 
 const addFormValidator = new FormValidator(validationConfig, addForm);

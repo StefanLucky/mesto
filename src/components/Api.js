@@ -3,6 +3,9 @@ export default class Api {
         this._url = config.baseUrl;
         this._headers = config.headers;
     }
+    getAllInfo(){
+        return Promise.all([this.getUserInfo(), this.getInitialCards()])
+    }
 
     getUserInfo() {
         return fetch(`${this._url}users/me`, {
@@ -10,7 +13,7 @@ export default class Api {
         })
             .then(res => {
                 if (res.ok) {
-                    return res.json();
+                    return res.json(); 
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
             })

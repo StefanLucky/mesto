@@ -9,7 +9,7 @@ export default class PopupDeleteCard extends Popup {
     open(cardData) {
         super.open();
         this._cardData = cardData;
-        return this._card;
+        return this._cardData;
     }
 
     setEventListeners() {
