@@ -6,10 +6,10 @@ export default class Section {
     renderElements(arr) {
         arr.forEach(item => this._render(item));
     }
-    addElements(card) {
+    addElements(card, before = false) {
+       if (before) {this._container.prepend(card);
+        }
+        else
         this._container.append(card);
-    }
-    addOneElement(card) {
-        this._container.prepend(card);
-    }
+     }
 }

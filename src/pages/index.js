@@ -20,9 +20,11 @@ import {
   about,
   avatar,
   avatarBtn,
-  avatarForm
+  avatarForm,
+  popupConfig
 } from '../utils/constants.js';
 
+import { renderLoading } from '../utils/utils.js';
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-20/',
   headers: {
@@ -51,8 +53,8 @@ api.getAllInfo()
     console.log(err);
 })
 
-const popupEdit = new PopupWithForm('.popup-edit', (userData) => {
-  popupEdit.renderLoading(true);
+const popupEdit = new PopupWithForm(popupConfig.popupEditConfig, (userData) => {
+  renderLoading(true);
   api.updateUserInfo(userData)
       .then(userData => {
         userInfo.setUserInfo(userData);
@@ -61,13 +63,14 @@ const popupEdit = new PopupWithForm('.popup-edit', (userData) => {
           console.log(err);
       })
       .finally(() => {
-          popupEdit.renderLoading(false);
+        renderLoading();
+        popupEdit.close();
       })
 });
 popupEdit.setEventListeners();
 
-const updateAvatar = new PopupWithForm('.popup-update-avatar', (userData) => {
-  updateAvatar.renderLoading(true)
+const updateAvatar = new PopupWithForm(popupConfig.popupAvatarConfig, (userData) => {
+  renderLoading(true)
   api.updateAvatar(userData)
       .then(userData => {
           avatar.src = userData.avatar;
@@ -76,7 +79,8 @@ const updateAvatar = new PopupWithForm('.popup-update-avatar', (userData) => {
           console.log(err);
       })
       .finally(() => {
-          updateAvatar.renderLoading(false);
+        renderLoading();
+        updateAvatar.close();
       })
 })
 updateAvatar.setEventListeners();
@@ -95,17 +99,18 @@ const cardsItem = new Section({
   elementsList
 );
 
-const popupAdd = new PopupWithForm('.popup-add', (userData) => {
-    popupAdd.renderLoading(true);
+const popupAdd = new PopupWithForm(popupConfig.popupAddConfig, (userData) => {
+    renderLoading(true);
     api.createCard(userData)
         .then(userData => {
-            cardsItem.addOneElement(createCard(userData));
+            cardsItem.addElements(createCard(userData), true);
         })
         .catch(err => {
             console.log(err);
         })
         .finally(() => {
-            popupAdd.renderLoading(false);
+          renderLoading();
+          popupAdd.close();
         })
 });
 popupAdd.setEventListeners();
@@ -127,6 +132,7 @@ function createCard(cardData) {
 }
 
 
+
 const popupDeleteCard = new PopupDeleteCard('.popup-delete', (cardData) => {
   api.deleteCard(cardData.cardId)
       .then(() => {
@@ -134,6 +140,9 @@ const popupDeleteCard = new PopupDeleteCard('.popup-delete', (cardData) => {
       })
       .catch(err => {
           console.log(err);
+      })
+      .finally(() => {
+        popupDeleteCard.close();
       })
 });
 popupDeleteCard.setEventListeners();

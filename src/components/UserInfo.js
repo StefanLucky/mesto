@@ -5,13 +5,13 @@ export default class UserInfo {
     this._profileAvatar = avatar;
     this._name = "";
     this._about = "";
-    this._id = "";
     this._avatar = "";
   }
   getUserInfo() {
     return { 
-      name: this._name,
-      about: this._about
+      name: this._profileName.textContent,
+      about: this._profileJob.textContent,
+      avatar: this._avatar
     };
   }
   setUserInfo(userData) {
@@ -24,4 +24,11 @@ export default class UserInfo {
     this._avatar = userData.avatar;
     this._profileAvatar.src = this._avatar;
   }
+
+/*   setUserInfo( userData ) {
+    if (userData.name) this._profileName.textContent = userData.name;
+    if (userData.about) this._profileJob.textContent = userData.about;
+    if (userData.avatar) this._profileAvatar.src = userData.avatar;
+  } */
+
 }

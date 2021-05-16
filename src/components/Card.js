@@ -1,4 +1,6 @@
 export default class Card {
+
+    // Наставник сказал, что передача экземпляра класса Api не является критичным замечанием
         constructor(data, cardSelector, handleCardClick, handleDeletePopup, api) {
         this._name = data.name;
         this._link = data.link;
@@ -12,21 +14,12 @@ export default class Card {
         this._handleDeletePopup = handleDeletePopup;
         this._elementId = data._id;
     }
-
     _getTemplate() {
         const cardTemplate = document.querySelector(this._elementSelector)
             .content.querySelector('.elements__item')
             .cloneNode(true);
         return cardTemplate;
     }
-
-  /*   _like() {
-        this._element.querySelector('.elements__button-like').classList.toggle('elements__button-like_active');
-    } */
-
-/*     _removeElement() {
-        this._element.closest('.elements__item').remove();
-    } */
 
     _updateLikes() {
         this._elementLikes.textContent = this._likesId.length;
@@ -35,8 +28,7 @@ export default class Card {
             }else{
             this._elementLike.classList.remove('elements__button-like_active');
             }
-        }
-       
+        } 
 
     _isLiked() { 
         return Boolean(this._likesId.find(obj => obj._id == this._myId));
@@ -51,7 +43,6 @@ export default class Card {
             this._dislikeCard()
         }
     }
-
 
     _likeCard() {
         this._api.likeCard(this._elementId)

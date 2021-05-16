@@ -28,6 +28,20 @@ export const validationConfig = {
     errorClass: 'popup__error_visible'
 };
 
+export const popupConfig = {
+  popupEditConfig: '.popup-edit',
+  popupAvatarConfig: '.popup-update-avatar',
+  popupAddConfig: '.popup-add'
+};
+
+export function renderLoading(isLoading) {
+  if (isLoading) {
+      this._submitButton.textContent = 'Сохранение...';
+  } else {
+      this._submitButton.textContent = this._submitOnLoadButton;
+  }
+}
+
 export const initialCards = [
     {
       name: "Париж",
