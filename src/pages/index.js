@@ -58,13 +58,13 @@ const popupEdit = new PopupWithForm(popupConfig.popupEditConfig, (userData) => {
   api.updateUserInfo(userData)
       .then(userData => {
         userInfo.setUserInfo(userData);
+        popupEdit.close();
       })
       .catch(err => {
           console.log(err);
       })
       .finally(() => {
         renderLoading();
-        popupEdit.close();
       })
 });
 popupEdit.setEventListeners();
@@ -74,13 +74,13 @@ const updateAvatar = new PopupWithForm(popupConfig.popupAvatarConfig, (userData)
   api.updateAvatar(userData)
       .then(userData => {
           avatar.src = userData.avatar;
+          updateAvatar.close();
       })
       .catch(err => {
           console.log(err);
       })
       .finally(() => {
         renderLoading();
-        updateAvatar.close();
       })
 })
 updateAvatar.setEventListeners();
@@ -104,13 +104,13 @@ const popupAdd = new PopupWithForm(popupConfig.popupAddConfig, (userData) => {
     api.createCard(userData)
         .then(userData => {
             cardsItem.addElements(createCard(userData), true);
+            popupAdd.close();
         })
         .catch(err => {
             console.log(err);
         })
         .finally(() => {
           renderLoading();
-          popupAdd.close();
         })
 });
 popupAdd.setEventListeners();
@@ -125,7 +125,7 @@ function createCard(cardData) {
         },
         (cardData) => {
             popupDeleteCard.open(cardData);
-        },
+        },   
         api);
     const card = cardSample.generateCard();
     return card;
@@ -137,12 +137,12 @@ const popupDeleteCard = new PopupDeleteCard('.popup-delete', (cardData) => {
   api.deleteCard(cardData.cardId)
       .then(() => {
           cardData.card.remove();
+          popupDeleteCard.close();
       })
       .catch(err => {
           console.log(err);
       })
       .finally(() => {
-        popupDeleteCard.close();
       })
 });
 popupDeleteCard.setEventListeners();
@@ -174,3 +174,4 @@ editFormValidator.enableValidation();
 
 const avatarFormValidator = new FormValidator(validationConfig, avatarForm);
 avatarFormValidator.enableValidation();
+
